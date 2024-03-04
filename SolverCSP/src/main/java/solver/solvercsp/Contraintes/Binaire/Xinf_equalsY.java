@@ -9,6 +9,7 @@ public class Xinf_equalsY extends Binaire{
 
     @Override
     public void evaluate(){
+//        this.getVariable("var1").infDomaine((Integer.this.getVariable("var2"))+1);
         //X <= Y
 //        X.changeDomain(min, Y);
 //        Y.changeDomain(X, max);

@@ -7,6 +7,11 @@ public class IntDomaine extends Domaine<Integer>{
         super.domaine.put("min0", -1000);
         super.domaine.put("max0", 1000);
     }
+    public IntDomaine(int min, int max){
+        super();
+        super.domaine.put("min0", min);
+        super.domaine.put("max0", max);
+    }
     @Override
     public void infDomaine(Integer val){
         for (int i = 0; i < getCompteur(); i++){
@@ -43,6 +48,14 @@ public class IntDomaine extends Domaine<Integer>{
                 super.domaine.replace("max" + i, val);
             }
             else { super.remDomaine(i); }
+        }
+    }
+
+    @Override
+    public void printDomain(){
+        for(int i = 0; i< domaine.size(); i++){
+            System.out.println("min" + i+ " : " + domaine.get("min"+i));
+            System.out.println("max" + i+ " : " + domaine.get("max"+i));
         }
     }
 }

@@ -11,6 +11,9 @@ public class XinfC extends Unaire {
     @Override
     public void evaluate(){
         //X < C
-//        X.changeDomain(min, C-1);
+        Variable x = super.getVariable("var1");
+        int constante = super.getConstante();
+
+        x.infDomaine(constante);
     }
 }

@@ -11,10 +11,12 @@ public abstract class Contrainte {
     protected Map<String, Variable> variableMap = new HashMap<>();
 
     protected int constante;
-
+    protected int compteur = 1;
     public Contrainte(Variable v1){}
     public Contrainte(Variable v1, int constante){
-
+        this.constante = constante;
+        this.variableMap.put("var" + compteur, v1);
+        compteur+=1;
     }
     public Contrainte(Variable v1, Variable v2){
 
@@ -27,8 +29,12 @@ public abstract class Contrainte {
         this.variableMap.put(name, value);
     }
 
-    public void getVariable(String name){
-        variableMap.get(name);
+    public Variable getVariable(String name){
+        return variableMap.get(name);
+    }
+
+    public int getConstante() {
+        return constante;
     }
 
     public abstract void evaluate();

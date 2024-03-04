@@ -27,4 +27,6 @@ public abstract class Domaine<Object> {
     public abstract void supDomaine(Object val);
     public abstract void diffDomaine(Object val);
     public abstract void egalDomaine(Object val);
+
+    public abstract void printDomain();
 }

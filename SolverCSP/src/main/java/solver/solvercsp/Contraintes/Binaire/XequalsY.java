@@ -9,6 +9,9 @@ public class XequalsY extends Binaire{
 
     @Override
     public void evaluate(){
+        this.getVariable("var1").egalDomaine(this.getVariable("var2"));
+        this.getVariable("var2").egalDomaine(this.getVariable("var1"));
+
         //X == v2
         //X.changeDomain(Y, true);
         //Y.changeDomain(X, true);

@@ -11,6 +11,6 @@ public class XdiffC extends Unaire {
     @Override
     public void evaluate(){
         //X != C
-//        X.changeDomain(C, false);
+//        this.getVariable("var1").diffDomaine();
     }
 }

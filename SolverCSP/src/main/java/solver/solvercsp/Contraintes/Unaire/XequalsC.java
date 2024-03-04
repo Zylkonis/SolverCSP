@@ -10,6 +10,7 @@ public class XequalsC extends Unaire {
 
     @Override
     public void evaluate(){
+        this.getVariable("var1").egalDomaine(this.getConstante());
         //X == C
 //        X.changeDomain(C, true);
     }
