@@ -5,17 +5,13 @@ import solver.solvercsp.Domaine;
 import solver.solvercsp.Variable;
 
 public class XsupC extends Unaire {
-    public XsupC(Variable X, int C){
-        super(X, C);
+    public XsupC(Variable var, int cst){
+        super(var, cst);
     }
 
     @Override
     public void evaluate(){
         //X > C
-        Variable x = super.getVariable("var1");
-        int constante = super.getConstante();
-
-        x.supDomaine(constante);
-
+        this.var.supDomaine(this.cst);
     }
 }

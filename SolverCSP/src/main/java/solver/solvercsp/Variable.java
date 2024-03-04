@@ -1,22 +1,22 @@
 package solver.solvercsp;
 
 public class Variable{
-    private Domaine domain;
+    private Domaine domaine;
     private String name;
 //    private
 
     public Variable(String name) {
-        this.domain = new IntDomaine();
+        this.domaine = new IntDomaine();
         this.name = name;
     }
 
-    public Variable(String name, Domaine domain) {
-        this.domain = domain;
+    public Variable(String name, Domaine domaine) {
+        this.domaine = domaine;
         this.name = name;
     }
 
-    public Domaine getDomain() {
-        return this.domain;
+    public Domaine getDomaine() {
+        return this.domaine;
     }
 
     public String getName() {
@@ -24,18 +24,18 @@ public class Variable{
     }
 
     public void infDomaine(Object val){
-        this.domain.infDomaine(val);
+        this.domaine.infDomaine(val);
     }
 
     public void supDomaine(Object val){
-        this.domain.supDomaine(val);
+        this.domaine.supDomaine(val);
     }
 
     public void diffDomaine(Object val){
-        this.domain.diffDomaine(val);
+        this.domaine.diffDomaine(val);
     }
 
     public void egalDomaine(Object val){
-        this.domain.egalDomaine(val);
+        this.domaine.egalDomaine(val);
     }
 }

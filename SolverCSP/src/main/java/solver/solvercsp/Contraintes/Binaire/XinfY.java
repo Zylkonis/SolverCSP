@@ -1,5 +1,6 @@
 package solver.solvercsp.Contraintes.Binaire;
 
+import solver.solvercsp.IntDomaine;
 import solver.solvercsp.Variable;
 
 public class XinfY extends Binaire{
@@ -10,7 +11,7 @@ public class XinfY extends Binaire{
     @Override
     public void evaluate(){
         //X < Y
-//        X.changeDomain(min, Y-1);
-//        Y.changeDomain(X+1, max);
+        IntDomaine d = (IntDomaine) super.var2.getDomaine();
+        super.var1.infDomaine(d.getMaxDomaine());
     }
 }

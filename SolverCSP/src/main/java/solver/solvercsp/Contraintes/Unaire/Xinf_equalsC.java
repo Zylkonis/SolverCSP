@@ -4,13 +4,13 @@ import solver.solvercsp.Contraintes.Unaire.Unaire;
 import solver.solvercsp.Variable;
 
 public class Xinf_equalsC extends Unaire {
-    public Xinf_equalsC(Variable X, int C){
-        super(X, C);
+    public Xinf_equalsC(Variable var, int cst){
+        super(var, cst);
     }
 
     @Override
     public void evaluate(){
         //X <= C
-//        X.changeDomain(min, C);
+        this.var.infDomaine(this.cst + 1);
     }
 }

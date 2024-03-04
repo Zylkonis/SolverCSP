@@ -4,13 +4,13 @@ import solver.solvercsp.Contraintes.Unaire.Unaire;
 import solver.solvercsp.Variable;
 
 public class XdiffC extends Unaire {
-    public XdiffC(Variable X, int C){
-        super(X, C);
+    public XdiffC(Variable var, int cst){
+        super(var, cst);
     }
 
     @Override
     public void evaluate(){
         //X != C
-//        this.getVariable("var1").diffDomaine();
+        this.var.diffDomaine(this.cst);
     }
 }

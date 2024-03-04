@@ -4,13 +4,13 @@ import solver.solvercsp.Contraintes.Unaire.Unaire;
 import solver.solvercsp.Variable;
 
 public class Xsup_equalsC extends Unaire {
-    public Xsup_equalsC(Variable X, int C){
-        super(X, C);
+    public Xsup_equalsC(Variable var, int cst){
+        super(var, cst);
     }
 
     @Override
     public void evaluate(){
         //X >= C
-//        X.changeDomain(C, max);
+        this.var.supDomaine(this.cst - 1);
     }
 }

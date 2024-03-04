@@ -11,14 +11,19 @@ public abstract class Domaine<Object> {
         this.domaine = new HashMap<>();
     }
 
-    public void addDomaine(Object min, Object max){
+    public void addSousDomaine(Object min, Object max){
         this.domaine.put("min" + this.compteur, min);
         this.domaine.put("max" + this.compteur, max);
         this.compteur += 1;
     }
-    public void remDomaine(int index){
-        this.domaine.remove("min" + index);
-        this.domaine.remove("max" + index);
+    public void remSousDomaine(int index){
+        for (int i = index; i < (this.compteur - 1); i++){
+            this.domaine.replace("min" + i, this.domaine.get("min" + (i + 1)));
+            this.domaine.replace("max" + i, this.domaine.get("max" + (i + 1)));
+        }
+        this.domaine.remove("min" + this.compteur);
+        this.domaine.remove("max" + this.compteur);
+        this.compteur -= 1;
     };
 
     public int getCompteur(){return this.compteur;}
@@ -28,5 +33,11 @@ public abstract class Domaine<Object> {
     public abstract void diffDomaine(Object val);
     public abstract void egalDomaine(Object val);
 
-    public abstract void printDomain();
+    public void printDomain(){
+        for(int i = 0; i < this.compteur; i++){
+            System.out.println("min" + i + " : " + this.domaine.get("min" + i));
+            System.out.println("max" + i + " : " + this.domaine.get("max" + i));
+        }
+        System.out.println();
+    };
 }

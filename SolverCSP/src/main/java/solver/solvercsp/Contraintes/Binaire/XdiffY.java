@@ -1,5 +1,6 @@
 package solver.solvercsp.Contraintes.Binaire;
 
+import solver.solvercsp.IntDomaine;
 import solver.solvercsp.Variable;
 
 public class XdiffY extends Binaire{
@@ -9,10 +10,16 @@ public class XdiffY extends Binaire{
 
     @Override
     public void evaluate(){
-        this.getVariable("var1").diffDomaine(this.getVariable("var2"));
-        this.getVariable("var2").diffDomaine(this.getVariable("var1"));
         //v1 != v2
-//        X.changeDomain(Y, false);
-//        Y.changeDomain(X, false);
+        IntDomaine d1 = (IntDomaine) super.var1.getDomaine();
+        IntDomaine d2 = (IntDomaine) super.var2.getDomaine();
+        if ( d1.getSizeDomaine() == 1 ){
+            int value = d1.getMinDomaine();
+            super.var2.diffDomaine(value);
+        }
+        if ( d2.getSizeDomaine() == 1 ){
+            int value = d2.getMinDomaine();
+            super.var1.diffDomaine(value);
+        }
     }
 }

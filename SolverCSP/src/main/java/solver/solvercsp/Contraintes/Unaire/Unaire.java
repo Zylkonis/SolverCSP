@@ -6,10 +6,12 @@ import solver.solvercsp.Variable;
 import java.util.Map;
 
 public abstract class Unaire extends Contrainte {
-    protected int constante;
-    public Unaire(Variable var, int constante){
-        super(var, constante);
-    }
+    protected Variable var;
+    protected int cst;
 
+    public Unaire(Variable var, int cst){
+        this.var = var;
+        this.cst = cst;
+    }
 
 }

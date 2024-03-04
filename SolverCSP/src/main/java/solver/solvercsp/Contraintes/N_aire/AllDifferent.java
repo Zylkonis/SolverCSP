@@ -11,6 +11,10 @@ public class AllDifferent extends N_aire{
 
     public void evaluate(){
         // x != y != z != ...
-//        X.changeDomain(constante, max);
+        for (int i = 0; i < super.compteur - 1; i++){
+            for (int j = i; j < super.compteur; j++){
+                super.variableMap.get("var" + i)
+            }
+        }
     }
 }
