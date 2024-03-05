@@ -26,17 +26,22 @@ public class Main {
 //
 //        csp.evaluate();
 
-        Variable x1 = new Variable("x1", new IntDomaine(5,5));
+        Variable x1 = new Variable("x1", new IntDomaine(0,5));
         IntDomaine d =(IntDomaine) x1.getDomaine();
-        d.addSousDomaine(10,20);
-        Variable x2 = new Variable("x2", new IntDomaine(-10,100));
+        d.addSousDomaine(9,10);
+        d.addSousDomaine(12,14);
+        Variable x2 = new Variable("x2", new IntDomaine(1,6));
+        IntDomaine d2 =(IntDomaine) x2.getDomaine();
+        d2.addSousDomaine(8,15);
         Contrainte c1 = new XequalsY(x1, x2);
+//        Contrainte c2 = new XequalsY(x1, x2);
         SolverCSP csp = new SolverCSP();
 
 
         csp.addVariable(x1);
         csp.addVariable(x2);
         csp.addContrainte(c1);
+//        csp.addContrainte(c2);
 
         csp.evaluate();
     }

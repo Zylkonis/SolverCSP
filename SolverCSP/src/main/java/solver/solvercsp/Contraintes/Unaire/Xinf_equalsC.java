@@ -9,8 +9,8 @@ public class Xinf_equalsC extends Unaire {
     }
 
     @Override
-    public void evaluate(){
+    public boolean evaluate(){
         //X <= C
-        this.var.infDomaine(this.cst + 1);
+        return super.var.infDomaine(super.cst + 1);
     }
 }

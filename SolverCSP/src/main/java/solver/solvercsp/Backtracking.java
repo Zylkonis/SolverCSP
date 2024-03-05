@@ -1,20 +1,25 @@
 package solver.solvercsp;
 
-import solver.solvercsp.Contraintes.Contrainte;
-
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.Stack;
 
 public class Backtracking {
-    private Map<String, Contrainte> contraintes;
-    private int compteur = 0;
+    /**
+     * maPile.push(10);--> met dans la pile
+     * elementSupprime = maPile.pop(); --> retire et récupère
+     * elementHaut = maPile.peek(); --> accède
+     */
+    Stack<Variable> pileBactrack = new Stack<>();
+    public Backtracking(){}
 
-    public Backtracking(Map<String, Contrainte> contraintes){
-        this.contraintes = contraintes;
-        this.compteur = contraintes.size();
+    public void add(Variable var){
+        this.pileBactrack.push(var);
     }
 
-    public void startSolve(){
+    public Variable getHead(){
+        return pileBactrack.peek();
+    }
 
+    public void removeHead(){
+        pileBactrack.pop();
     }
 }

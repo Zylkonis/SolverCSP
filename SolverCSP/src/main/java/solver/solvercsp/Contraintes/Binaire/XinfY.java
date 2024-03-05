@@ -9,9 +9,9 @@ public class XinfY extends Binaire{
     }
 
     @Override
-    public void evaluate(){
+    public boolean evaluate(){
         //X < Y
         IntDomaine d = (IntDomaine) super.var2.getDomaine();
-        super.var1.infDomaine(d.getMaxDomaine());
+        return super.var1.infDomaine(d.getMaxDomaine());
     }
 }

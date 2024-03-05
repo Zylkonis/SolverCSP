@@ -9,9 +9,11 @@ public class XsupY extends Binaire {
     }
 
     @Override
-    public void evaluate() {
+    public boolean evaluate() {
         //X > Y
-        var1.getDomaine().supDomaine(((IntDomaine) var2.getDomaine()).getMinDomaine() + 1);
-        var2.getDomaine().infDomaine(((IntDomaine) var1.getDomaine()).getMinDomaine() - 1);
+        boolean filtre = false;
+        filtre = filtre || super.var1.getDomaine().supDomaine(((IntDomaine) super.var2.getDomaine()).getMinDomaine() + 1);
+        filtre = filtre || super.var2.getDomaine().infDomaine(((IntDomaine) super.var1.getDomaine()).getMinDomaine() - 1);
+        return filtre;
     }
 }

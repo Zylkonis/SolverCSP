@@ -60,57 +60,76 @@ public class IntDomaine extends Domaine<Integer> {
     }
 
     @Override
-    public void infDomaine(Integer val) {
+    public boolean infDomaine(Integer val) {
+        boolean filtre = false;
         for (int i = 0; i < super.compteur; i++) {
             if (super.domaine.get("min" + i) > val) {
                 super.remSousDomaine(i);
+                filtre = true;
             } else if (super.domaine.get("max" + i) > val) {
                 super.domaine.replace("max" + i, val - 1);
+                filtre = true;
             }
         }
+        return filtre;
     }
 
     @Override
-    public void supDomaine(Integer val) {
+    public boolean supDomaine(Integer val) {
+        boolean filtre = false;
         for (int i = 0; i < super.compteur; i++) {
             if (super.domaine.get("max" + i) < val) {
                 super.remSousDomaine(i);
+                filtre = true;
             } else if (super.domaine.get("min" + i) < val) {
                 super.domaine.replace("min" + i, val + 1);
+                filtre = true;
             }
         }
+        return filtre;
     }
 
     @Override
-    public void diffDomaine(Integer val) {
+    public boolean diffDomaine(Integer val) {
+        boolean filtre = false;
         for (int i = 0; i < super.compteur; i++) {
             if (super.domaine.get("min" + i).equals(val) && super.domaine.get("max" + i).equals(val)) {
                 super.remSousDomaine(i);
+                filtre = true;
             }
             if (super.domaine.get("min" + i).equals(val)) {
                 super.domaine.replace("min" + i, val + 1);
+                filtre =  true;
             }
             if (super.domaine.get("max" + i).equals(val)) {
                 super.domaine.replace("max" + i, val - 1);
+                filtre =  true;
             }
             if (super.domaine.get("min" + i) < val && val < super.domaine.get("max" + i)) {
                 Integer max = super.domaine.get("max" + i);
                 super.domaine.replace("max" + i, val - 1);
                 super.addSousDomaine(i+1, val + 1, max);
+                filtre =  true;
             }
         }
+        return filtre;
     }
 
     @Override
-    public void egalDomaine(Integer val) {
+    public boolean egalDomaine(Integer val) {
         //A voir si on est dans le cas avec une variable
+        boolean filtre = false;
         for (int i = 0; i < super.compteur; i++) {
-            if (super.domaine.get("min" + i) < val && val < super.domaine.get("max" + i)) {
-                super.domaine.replace("min" + i, val);
-                super.domaine.replace("max" + i, val);
-            } else {
-                super.remSousDomaine(i);
+            if (super.domaine.get("min" + i) != val || super.domaine.get("max" + i) != val){
+                if (super.domaine.get("min" + i) < val && val < super.domaine.get("max" + i)) {
+                    super.domaine.replace("min" + i, val);
+                    super.domaine.replace("max" + i, val);
+                } else {
+                    super.remSousDomaine(i);
+                }
+
             }
         }
+        return filtre;
     }
 }

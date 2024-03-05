@@ -62,10 +62,10 @@ public abstract class Domaine<Object> {
 
     public int getCompteur(){return this.compteur;}
 
-    public abstract void infDomaine(Object val);
-    public abstract void supDomaine(Object val);
-    public abstract void diffDomaine(Object val);
-    public abstract void egalDomaine(Object val);
+    public abstract boolean infDomaine(Object val);
+    public abstract boolean supDomaine(Object val);
+    public abstract boolean diffDomaine(Object val);
+    public abstract boolean egalDomaine(Object val);
 
     public void printDomain(){
         for(int i = 0; i < this.compteur; i++){

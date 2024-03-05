@@ -11,6 +11,6 @@ public abstract class Contrainte {
 
     public Contrainte(){}
 
-    public abstract void evaluate();
+    public abstract boolean evaluate();
 
 }

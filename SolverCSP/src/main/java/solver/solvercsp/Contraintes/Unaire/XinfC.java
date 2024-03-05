@@ -9,8 +9,8 @@ public class XinfC extends Unaire {
     }
 
     @Override
-    public void evaluate(){
+    public boolean evaluate(){
         //X < C
-        this.var.infDomaine(this.cst);
+        return super.var.infDomaine(super.cst);
     }
 }

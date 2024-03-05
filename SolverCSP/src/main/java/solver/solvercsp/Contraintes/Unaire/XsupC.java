@@ -10,8 +10,8 @@ public class XsupC extends Unaire {
     }
 
     @Override
-    public void evaluate(){
+    public boolean evaluate(){
         //X > C
-        this.var.supDomaine(this.cst);
+        return super.var.supDomaine(super.cst);
     }
 }

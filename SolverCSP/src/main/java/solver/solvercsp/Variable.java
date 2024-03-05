@@ -2,40 +2,41 @@ package solver.solvercsp;
 
 public class Variable{
     private Domaine domaine;
-    private String name;
+    private final String nom;
 //    private
 
-    public Variable(String name) {
+    public Variable(String nom) {
         this.domaine = new IntDomaine();
-        this.name = name;
+        this.nom = nom;
     }
 
     public Variable(String name, Domaine domaine) {
         this.domaine = domaine;
-        this.name = name;
+        this.nom = name;
     }
 
     public Domaine getDomaine() {
         return this.domaine;
     }
 
-    public String getName() {
-        return this.name;
+    public String getNom() {
+        return this.nom;
     }
 
-    public void infDomaine(Object val){
-        this.domaine.infDomaine(val);
+    public boolean infDomaine(Object val){
+        return this.domaine.infDomaine(val);
     }
 
-    public void supDomaine(Object val){
-        this.domaine.supDomaine(val);
+    public boolean supDomaine(Object val){
+        return this.domaine.supDomaine(val);
     }
 
-    public void diffDomaine(Object val){
-        this.domaine.diffDomaine(val);
+    public boolean diffDomaine(Object val){
+        return this.domaine.diffDomaine(val);
     }
 
-    public void egalDomaine(Object val){
-        this.domaine.egalDomaine(val);
+    public boolean egalDomaine(Object val){
+        return this.domaine.egalDomaine(val);
     }
+    public Variable Doppelganger(){ return new Variable(this.getNom(), this.getDomaine()); }
 }

@@ -9,8 +9,8 @@ public class XequalsC extends Unaire {
     }
 
     @Override
-    public void evaluate(){
+    public boolean evaluate(){
         //X == C
-        this.var.egalDomaine(this.cst);
+        return super.var.egalDomaine(super.cst);
     }
 }

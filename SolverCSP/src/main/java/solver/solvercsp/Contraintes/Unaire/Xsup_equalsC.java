@@ -9,8 +9,8 @@ public class Xsup_equalsC extends Unaire {
     }
 
     @Override
-    public void evaluate(){
+    public boolean evaluate(){
         //X >= C
-        this.var.supDomaine(this.cst - 1);
+        return super.var.supDomaine(super.cst - 1);
     }
 }

@@ -9,9 +9,11 @@ public class Xsup_equalsY extends Binaire{
     }
 
     @Override
-    public void evaluate(){
+    public boolean evaluate(){
         //X>= Y
-        var1.supDomaine(((IntDomaine) var2.getDomaine()).getMinDomaine());
-        var2.infDomaine(((IntDomaine) var1.getDomaine()).getMaxDomaine());
+        boolean filtre = false;
+        filtre = filtre || super.var1.supDomaine(((IntDomaine) super.var2.getDomaine()).getMinDomaine());
+        filtre = filtre || super.var2.infDomaine(((IntDomaine) super.var1.getDomaine()).getMaxDomaine());
+        return filtre;
     }
 }

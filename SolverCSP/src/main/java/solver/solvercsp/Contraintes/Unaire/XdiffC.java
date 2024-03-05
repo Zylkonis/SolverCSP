@@ -9,8 +9,8 @@ public class XdiffC extends Unaire {
     }
 
     @Override
-    public void evaluate(){
+    public boolean evaluate(){
         //X != C
-        this.var.diffDomaine(this.cst);
+        return super.var.diffDomaine(super.cst);
     }
 }

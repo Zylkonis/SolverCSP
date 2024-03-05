@@ -2,6 +2,7 @@ package solver.solvercsp.Contraintes.N_aire;
 
 import solver.solvercsp.Contraintes.Binaire.XdiffY;
 import solver.solvercsp.IntDomaine;
+import solver.solvercsp.SolverCSP;
 import solver.solvercsp.Variable;
 
 import java.util.HashMap;
@@ -12,21 +13,22 @@ public class AllDifferent extends N_aire{
         super(vars);
     }
 
-    public void evaluate(){
+    public boolean evaluate(){
         // x != y != z != ...
-         for (int i = 0; i < super.compteurVar; i++) {
-             Variable var1 = super.variableMap.get("var" + i);
-             IntDomaine d1 = (IntDomaine) var1.getDomaine();
-             if (d1.getSizeDomaine() == 1){
+        boolean filtre = false;
+        for (int i = 0; i < super.compteurVar; i++) {
+            Variable var1 = super.variableMap.get("var" + i);
+            IntDomaine d1 = (IntDomaine) var1.getDomaine();
+            if (d1.getSizeDomaine() == 1){
                  for (int j = 0; j < super.compteurVar; j++) {
                      Variable var2 = super.variableMap.get("var" + j);
-                     IntDomaine d2 = (IntDomaine) var2.getDomaine();
                      if (!var1.equals(var2)) {
                          int value = d1.getMinDomaine();
-                         var2.diffDomaine(value);
+                         filtre = var2.diffDomaine(value);
                      }
                  }
              }
          }
+        return filtre;
     }
 }
