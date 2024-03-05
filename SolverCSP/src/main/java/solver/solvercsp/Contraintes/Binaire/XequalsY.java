@@ -14,34 +14,52 @@ public class XequalsY extends Binaire{
         IntDomaine dx = (IntDomaine) this.var1.getDomaine();
         IntDomaine dy = (IntDomaine) this.var2.getDomaine();
         IntDomaine equals = new IntDomaine();
+        boolean end = false;
         int tmpminX = 0;
         int tmpmaxX = 0;
         int tmpminY = 0;
         int tmpmaxY = 0;
         int compteurX = 0;
         int compteurY = 0;
-        while(tmpminX != -1001 || tmpminY != -1001){
-            tmpminX =dx.getMinSousDomaine(compteurX);
+        int compteurEquals = 0;
+        while(!end){
+            System.out.println("je suis dans la boucle equals\n");
+            tmpminX = dx.getMinSousDomaine(compteurX);
             tmpmaxX = dx.getMaxSousDomaine(compteurX);
             tmpminY = dy.getMinSousDomaine(compteurY);
             tmpmaxY = dy.getMaxSousDomaine(compteurY);
-            if(tmpminX>tmpminY){
-                if(tmpminX>tmpmaxY){
-                    compteurY += 1;
-                } else {
-                    dy.setMinSousDomain(compteurX, tmpminX);
-                }
+            if(tmpminX == -1001 || tmpminY == -1001){
+                end = true;
             } else {
-                if(tmpmaxX>tmpminY){
-                    if(tmpmaxX>tmpmaxY){
-                        dy.setMaxSousDomain(compteurX, tm);
+                if(tmpminX>tmpminY){
+                    if(tmpminX>tmpmaxY){
+                        compteurY += 1;
+                    } else if(tmpmaxX>tmpmaxY){
+                        equals.addSousDomaine(compteurEquals,tmpminY,tmpmaxY);
+                        compteurY += 1;
+                        compteurEquals += 1;
+                    } else { // if(tmpmaxX < tmpmaxY)
+                        equals.addSousDomaine(compteurEquals, tmpminY, tmpmaxX);
+                        compteurX += 1;
+                        compteurEquals += 1;
                     }
-                    dx.setMinSousDomain(compteurY, tmpminY);
-                } else {
-                    compteurX += 1;
+                }else {
+                    if(tmpminY > tmpmaxX){
+                        compteurX += 1;
+                    } else if(tmpmaxY > tmpmaxX){
+                        equals.addSousDomaine(compteurEquals, tmpminY, tmpmaxX);
+                        compteurX += 1;
+                        compteurEquals += 1;
+                    } else { // if tmpmaxX < tmpmaxY
+                        equals.addSousDomaine(compteurEquals, tmpminY, tmpmaxY);
+                        compteurY += 1;
+                        compteurEquals += 1;
+                    }
                 }
             }
 
         }
+        dx.changeDomain(equals, compteurEquals);
+        dy.changeDomain(equals, compteurEquals);
     }
 }

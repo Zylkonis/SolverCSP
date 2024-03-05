@@ -61,7 +61,7 @@ public class IntDomaine extends Domaine<Integer> {
 
     @Override
     public void infDomaine(Integer val) {
-        for (int i = 0; i < getCompteur(); i++) {
+        for (int i = 0; i < super.compteur; i++) {
             if (super.domaine.get("min" + i) > val) {
                 super.remSousDomaine(i);
             } else if (super.domaine.get("max" + i) > val) {
@@ -72,7 +72,7 @@ public class IntDomaine extends Domaine<Integer> {
 
     @Override
     public void supDomaine(Integer val) {
-        for (int i = 0; i < getCompteur(); i++) {
+        for (int i = 0; i < super.compteur; i++) {
             if (super.domaine.get("max" + i) < val) {
                 super.remSousDomaine(i);
             } else if (super.domaine.get("min" + i) < val) {
@@ -83,7 +83,10 @@ public class IntDomaine extends Domaine<Integer> {
 
     @Override
     public void diffDomaine(Integer val) {
-        for (int i = 0; i < getCompteur(); i++) {
+        for (int i = 0; i < super.compteur; i++) {
+            if (super.domaine.get("min" + i).equals(val) && super.domaine.get("max" + i).equals(val)) {
+                super.remSousDomaine(i);
+            }
             if (super.domaine.get("min" + i).equals(val)) {
                 super.domaine.replace("min" + i, val + 1);
             }
@@ -93,7 +96,7 @@ public class IntDomaine extends Domaine<Integer> {
             if (super.domaine.get("min" + i) < val && val < super.domaine.get("max" + i)) {
                 Integer max = super.domaine.get("max" + i);
                 super.domaine.replace("max" + i, val - 1);
-                super.addSousDomaine(val + 1, max);
+                super.addSousDomaine(i+1, val + 1, max);
             }
         }
     }
@@ -101,7 +104,7 @@ public class IntDomaine extends Domaine<Integer> {
     @Override
     public void egalDomaine(Integer val) {
         //A voir si on est dans le cas avec une variable
-        for (int i = 0; i < getCompteur(); i++) {
+        for (int i = 0; i < super.compteur; i++) {
             if (super.domaine.get("min" + i) < val && val < super.domaine.get("max" + i)) {
                 super.domaine.replace("min" + i, val);
                 super.domaine.replace("max" + i, val);

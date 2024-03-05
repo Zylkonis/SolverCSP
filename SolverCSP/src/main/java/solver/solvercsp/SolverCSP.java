@@ -27,15 +27,18 @@ public class SolverCSP {
     }
 
     public void evaluate(){
-        for (int i = 1; i < compteurCont; i++){
-            Contrainte x = contrainteMap.get("cont" + i);
-            x.evaluate();
-        }
-        for (int j = 1 ; j < compteurVar; j++){
-            Variable x = variableMap.get("var" + j);
-            System.out.println(x.getName());
-            IntDomaine d = (IntDomaine) x.getDomaine();
-            d.printDomain();
+        boolean filter = true;
+        while (filter){
+            for (int i = 1; i < compteurCont; i++){
+                Contrainte x = contrainteMap.get("cont" + i);
+                filter = x.evaluate() && filter;
+            }
+            for (int j = 1 ; j < compteurVar; j++){
+                Variable x = variableMap.get("var" + j);
+                System.out.println(x.getName());
+                IntDomaine d = (IntDomaine) x.getDomaine();
+                d.printDomain();
+            }
         }
     }
 }
