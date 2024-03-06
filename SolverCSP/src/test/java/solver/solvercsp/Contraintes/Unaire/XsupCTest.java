@@ -10,13 +10,11 @@ class XsupCTest {
 
     @Test
     void evaluate() {
-        IntDomaine dom = new IntDomaine(1,10);
-        dom.getDomain().put()
-        Variable var1 = new Variable("x", );
-        Variable var2 = new Variable("x", new IntDomaine(1,10));
-        Variable var3 = new Variable("x", new IntDomaine(1,10));
-        Variable var4 = new Variable("x", new IntDomaine(1,10));
-        Variable var5 = new Variable("x", new IntDomaine(1,10));
+        Variable var1 = new Variable("x1", new IntDomaine(1,10));
+        Variable var2 = new Variable("x2", new IntDomaine(1,10));
+        Variable var3 = new Variable("x3", new IntDomaine(1,10));
+        Variable var4 = new Variable("x4", new IntDomaine(1,10));
+        Variable var5 = new Variable("x5", new IntDomaine(1,10));
 
         // valeurs en dehors du domaine
         XsupC cont0 = new XsupC(var1, 0);
@@ -29,12 +27,20 @@ class XsupCTest {
         // valeurs dans le domaine
         XsupC cont5 = new XsupC(var5, 5);
 
-        assertEquals(var1.getDomaine(), new IntDomaine(1, 10), "erreur: XsupC cont0");
-        assertNull(var2.getDomaine(), "erreur: XsupC cont11");
+        assertFalse(cont0.evaluate());
+        assertEquals(new IntDomaine(1, 10).getDomain(), var1.getDomaine().getDomain(), "erreur: XsupC cont0");
 
-        assertEquals(var3.getDomaine(), new IntDomaine(1, 10), "erreur: XsupC cont1");
-        assertNull(var4.getDomaine(), "erreur: XsupC cont10");
+        assertThrows(NullPointerException.class, cont11::evaluate, "Expected NullPointerException to be thrown");
+        assertNull(var2.getDomaine().getDomain(), "erreur: XsupC cont11");
 
-        assertEquals(var5.getDomaine(), new IntDomaine(6, 10), "erreur: XsupC cont5");
+
+        assertTrue(cont1.evaluate());
+        assertEquals(new IntDomaine(2, 10).getDomain(), var3.getDomaine().getDomain(),"erreur: XsupC cont1");
+
+        assertThrows(NullPointerException.class, cont10::evaluate, "Expected NullPointerException to be thrown");
+        assertNull(var4.getDomaine().getDomain(), "erreur: XsupC cont10");
+
+        assertTrue(cont5.evaluate());
+        assertEquals(new IntDomaine(6, 10).getDomain(), var5.getDomaine().getDomain(),"erreur: XsupC cont5");
     }
 }

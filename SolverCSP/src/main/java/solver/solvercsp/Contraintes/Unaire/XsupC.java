@@ -14,8 +14,7 @@ public class XsupC extends Unaire {
     public boolean evaluate(){
         //X > C
         boolean filtre = super.var.supDomaine(super.cst);
-        Domaine d = (IntDomaine) this.var.getDomaine();
-        System.out.println(d);
+        Domaine d = super.var.getDomaine();
         if(d.getDomain() == null){
             throw new NullPointerException("La variable est nulle");
         } else {
@@ -23,3 +22,4 @@ public class XsupC extends Unaire {
         }
     }
 }
+

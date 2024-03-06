@@ -1,14 +1,9 @@
 package solver.solvercsp.Contraintes.N_aire;
 
-import solver.solvercsp.Contraintes.Binaire.XdiffY;
 import solver.solvercsp.IntDomaine;
-import solver.solvercsp.SolverCSP;
 import solver.solvercsp.Variable;
 
-import java.util.HashMap;
-import java.util.Map;
-
-public class AllDifferent extends N_aire{
+public class AllDifferent extends Naire {
     public AllDifferent(Variable... vars){
         super(vars);
     }
@@ -31,8 +26,13 @@ public class AllDifferent extends N_aire{
                          filtre = var2.diffDomaine(value) || filtre;
                      }
                  }
-             }
-         }
+            }
+        }
+        for (int i = 0; i < super.compteurVar; i++){
+            if (super.variableMap.get("var" + i) == null){
+                throw new NullPointerException("La variable est nulle");
+            }
+        }
         return filtre;
     }
 }

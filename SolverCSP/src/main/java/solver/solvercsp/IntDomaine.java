@@ -14,11 +14,23 @@ public class IntDomaine extends Domaine<Integer> {
         super.domaine.put("max0", max);
     }
 
-    public IntDomaine(int... values) {
-        super();
-        //super.domaine.put("min0", min);
-        //super.domaine.put("max0", max);
-    }
+//    public IntDomaine(int... vals) {
+//        super();
+//        if (vals.length % 2 == 0){
+//            String borne;
+//            int i = 0;
+//            for (int val: vals){
+//                borne = "min";
+//                super.domaine.put(borne + i, val);
+//                borne = "max";
+//                super.domaine.put(borne + i, val);
+//                i += 1;
+//            }
+//        }
+//        else {
+//            throw new NullPointerException("Nombre de valeurs non paires");
+//        }
+//    }
 
     public int getCardDomaine(){
         int size = 0;

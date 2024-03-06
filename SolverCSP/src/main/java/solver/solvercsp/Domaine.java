@@ -11,10 +11,10 @@ public abstract class Domaine<Object> {
         this.domaine = new HashMap<>();
     }
 
-    public void changeDomain(Domaine<Object> domain, int size){
+    public void changeDomain(Domaine<Object> domain){
         this.domaine.clear();
         this.domaine = domain.getDomain();
-        this.compteur = size;
+        this.compteur = domaine.size();
     }
 
     public Map<String, Object> getDomain(){

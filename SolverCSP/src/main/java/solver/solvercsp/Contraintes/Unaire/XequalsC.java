@@ -1,6 +1,7 @@
 package solver.solvercsp.Contraintes.Unaire;
 
 import solver.solvercsp.Contraintes.Unaire.Unaire;
+import solver.solvercsp.Domaine;
 import solver.solvercsp.Variable;
 
 public class XequalsC extends Unaire {
@@ -11,6 +12,12 @@ public class XequalsC extends Unaire {
     @Override
     public boolean evaluate(){
         //X == C
-        return super.var.egalDomaine(super.cst);
+        boolean filtre = super.var.egalDomaine(super.cst);
+        Domaine d = super.var.getDomaine();
+        if(d.getDomain() == null){
+            throw new NullPointerException("La variable est nulle");
+        } else {
+            return filtre;
+        }
     }
 }

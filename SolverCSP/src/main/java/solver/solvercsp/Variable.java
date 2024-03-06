@@ -3,7 +3,7 @@ package solver.solvercsp;
 public class Variable{
     private Domaine domaine;
     private final String nom;
-//    private
+
 
     public Variable(String nom) {
         this.domaine = new IntDomaine();
@@ -38,5 +38,6 @@ public class Variable{
     public boolean egalDomaine(Object val){
         return this.domaine.egalDomaine(val);
     }
+
     public Variable Doppelganger(){ return new Variable(this.getNom(), this.getDomaine()); }
 }
