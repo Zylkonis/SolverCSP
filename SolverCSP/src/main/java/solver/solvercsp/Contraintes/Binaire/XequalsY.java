@@ -32,7 +32,7 @@ public class XequalsY extends Binaire{
                 end = true;
             } else {
                 if(tmpminX>tmpminY){
-                    if(tmpminX>tmpmaxY){
+                    if(tmpminX>=tmpmaxY){
                         compteurY += 1;
                     } else if(tmpmaxX>tmpmaxY){
                         equals.addSousDomaine(compteurEquals,tmpminX,tmpmaxY);
@@ -60,8 +60,31 @@ public class XequalsY extends Binaire{
                         compteurEquals += 1;
                     }
                 } else {
-                    compteurX += 1;
-                    compteurY += 1;
+                    if(tmpminX==tmpmaxY){
+                        equals.addSousDomaine(compteurEquals, tmpminY, tmpmaxY);
+                        filtre = true;
+                        compteurY += 1;
+                        compteurEquals += 1;
+                    } else if(tmpmaxX==tmpminY){
+                        equals.addSousDomaine(compteurEquals, tmpminX, tmpmaxX);
+                        filtre = true;
+                        compteurX += 1;
+                        compteurEquals += 1;
+                    } else if(tmpmaxX > tmpmaxY){
+                        equals.addSousDomaine(compteurEquals, tmpminX, tmpmaxY);
+                        filtre = true;
+                        compteurY += 1;
+                        compteurEquals += 1;
+                    } else if(tmpmaxX < tmpmaxY){
+                        equals.addSousDomaine(compteurEquals, tmpminX, tmpmaxX);
+                        filtre = true;
+                        compteurX += 1;
+                        compteurEquals += 1;
+                    } else {
+                        compteurX += 1;
+                        compteurY += 1;
+                    }
+
                 }
             }
 

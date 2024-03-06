@@ -11,7 +11,9 @@ public class XinfY extends Binaire{
     @Override
     public boolean evaluate(){
         //X < Y
-        IntDomaine d = (IntDomaine) super.var2.getDomaine();
-        return super.var1.infDomaine(d.getMaxDomaine());
+        boolean filtre = false;
+        filtre = filtre || super.var2.supDomaine(((IntDomaine) super.var1.getDomaine()).getMinDomaine());
+        filtre = filtre || super.var1.infDomaine(((IntDomaine) super.var2.getDomaine()).getMaxDomaine());
+        return filtre;
     }
 }

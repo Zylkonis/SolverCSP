@@ -12,8 +12,8 @@ public class XsupY extends Binaire {
     public boolean evaluate() {
         //X > Y
         boolean filtre = false;
-        filtre = filtre || super.var1.getDomaine().supDomaine(((IntDomaine) super.var2.getDomaine()).getMinDomaine() + 1);
-        filtre = filtre || super.var2.getDomaine().infDomaine(((IntDomaine) super.var1.getDomaine()).getMinDomaine() - 1);
+        filtre = filtre || super.var1.supDomaine(((IntDomaine) super.var2.getDomaine()).getMinDomaine());
+        filtre = filtre || super.var2.infDomaine(((IntDomaine) super.var1.getDomaine()).getMaxDomaine());
         return filtre;
     }
 }

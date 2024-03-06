@@ -14,11 +14,11 @@ public class XdiffY extends Binaire{
         boolean filtre = false;
         IntDomaine d1 = (IntDomaine) super.var1.getDomaine();
         IntDomaine d2 = (IntDomaine) super.var2.getDomaine();
-        if ( d1.getSizeDomaine() == 1 ){
+        if ( d1.getCardDomaine() == 1 ){
             int value = d1.getMinDomaine();
             filtre = super.var2.diffDomaine(value);
         }
-        if ( d2.getSizeDomaine() == 1 ){
+        if ( d2.getCardDomaine() == 1 ){
             int value = d2.getMinDomaine();
             filtre = super.var1.diffDomaine(value);
         }

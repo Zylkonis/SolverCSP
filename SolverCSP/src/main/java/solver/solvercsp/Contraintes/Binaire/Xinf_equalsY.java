@@ -9,7 +9,9 @@ public class Xinf_equalsY extends Binaire{
     @Override
     public boolean evaluate(){
         //X <= Y
-        IntDomaine d = (IntDomaine) super.var2.getDomaine();
-        return super.var1.infDomaine(d.getMaxDomaine() + 1);
+        boolean filtre = false;
+        filtre = filtre || super.var2.supDomaine(((IntDomaine) super.var1.getDomaine()).getMinDomaine() - 1);
+        filtre = filtre || super.var1.infDomaine(((IntDomaine) super.var2.getDomaine()).getMaxDomaine() + 1);
+        return filtre;
     }
 }

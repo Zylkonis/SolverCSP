@@ -11,7 +11,7 @@ public abstract class Domaine<Object> {
         this.domaine = new HashMap<>();
     }
 
-    public void changeDomain(Domaine domain, int size){
+    public void changeDomain(Domaine<Object> domain, int size){
         this.domaine.clear();
         this.domaine = domain.getDomain();
         this.compteur = size;
@@ -19,11 +19,6 @@ public abstract class Domaine<Object> {
 
     public Map<String, Object> getDomain(){
         return this.domaine;
-    }
-    public void addSousDomaine(Object min, Object max){
-        this.domaine.put("min" + this.compteur, min);
-        this.domaine.put("max" + this.compteur, max);
-        this.compteur += 1;
     }
 
     public void addSousDomaine(int place, Object min, Object max)
@@ -50,13 +45,19 @@ public abstract class Domaine<Object> {
             this.domaine.replace("max" + (place), max);
         }
     }
+
     public void remSousDomaine(int index){
-        for (int i = index; i < (this.compteur - 1); i++){
-            this.domaine.replace("min" + i, this.domaine.get("min" + (i + 1)));
-            this.domaine.replace("max" + i, this.domaine.get("max" + (i + 1)));
+        if (this.compteur == 1){
+            this.domaine = null;
         }
-        this.domaine.remove("min" + this.compteur);
-        this.domaine.remove("max" + this.compteur);
+        else {
+            for (int i = index; i < (this.compteur - 1); i++){
+                this.domaine.replace("min" + i, this.domaine.get("min" + (i + 1)));
+                this.domaine.replace("max" + i, this.domaine.get("max" + (i + 1)));
+            }
+            this.domaine.remove("min" + this.compteur);
+            this.domaine.remove("max" + this.compteur);
+        }
         this.compteur -= 1;
     }
 

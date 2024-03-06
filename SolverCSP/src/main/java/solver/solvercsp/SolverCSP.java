@@ -35,25 +35,46 @@ public class SolverCSP {
             filtre = false;
             for (int i = 1; i < this.compteurCont; i++){
                 Contrainte x = contrainteMap.get("cont" + i);
-                filtre = x.evaluate() || filtre;
+                try{
+                    filtre = x.evaluate() || filtre;
+                } catch (NullPointerException e){
+                    System.out.println("erreur retour en arrière");
+                    Variable v = backtracking.getHead();
+                    String nameV = v.getNom();
+                    IntDomaine d = (IntDomaine) v.getDomaine();
+                    int val = d.getMinDomaine();
+                    Variable newVariable = backtracking.getHead();
+                    IntDomaine newDomain = (IntDomaine) newVariable.getDomaine();
+                    boolean test = newDomain.diffDomaine(val);
+                    if(test){
+                        this.variableMap.replace(nameV, newVariable);
+                    }
+                }
             }
-            for (int j = 1 ; j < this.compteurVar; j++){
-                Variable x = variableMap.get("var" + j);
-                System.out.println(x.getNom());
-                IntDomaine d = (IntDomaine) x.getDomaine();
-                d.printDomain();
-            }
+
+
+
+//            for (int i = 1; i < this.compteurCont; i++){
+//                Contrainte x = contrainteMap.get("cont" + i);
+//                filtre = x.evaluate() || filtre;
+//            }
+//            for (int j = 1 ; j < this.compteurVar; j++){
+//                Variable x = variableMap.get("var" + j);
+//                System.out.println(x.getNom());
+//                IntDomaine d = (IntDomaine) x.getDomaine();
+//                d.printDomain();
+//            }
         }
     }
 
     public void forwardChecking(){
         String varname = "var1";
         IntDomaine d = (IntDomaine) variableMap.get("var1").getDomaine();
-        int tailleDomaine = d.getSizeDomaine();
+        int tailleDomaine = d.getCardDomaine();
         int tmptaille;
         for(int i = 2; i<=this.compteurVar; i++){
             d = (IntDomaine) variableMap.get("var" + i).getDomaine();
-            tmptaille = d.getSizeDomaine();
+            tmptaille = d.getCardDomaine();
             if(tailleDomaine > tmptaille){
                 tailleDomaine = tmptaille;
                 varname = "var" + i;
@@ -65,5 +86,6 @@ public class SolverCSP {
         int tmp = oldDomaine.getMinDomaine();
         IntDomaine newDomain = new IntDomaine(tmp, tmp);
         oldDomaine.changeDomain(newDomain, 1);
+        backtracking.add(variableMap.get(varname));
     }
 }
