@@ -1,5 +1,6 @@
 package solver.solvercsp.Contraintes.Binaire;
 
+import solver.solvercsp.ExceptionDomNull;
 import solver.solvercsp.IntDomaine;
 import solver.solvercsp.Variable;
 
@@ -9,13 +10,15 @@ public class XequalsY extends Binaire{
     }
 
     @Override
-    public boolean evaluate(){
+    public boolean evaluate() throws ExceptionDomNull {
+        System.out.println("XequalsY\n");
         //v1 == v2
         IntDomaine dx = (IntDomaine) super.var1.getDomaine();
         IntDomaine dy = (IntDomaine) super.var2.getDomaine();
         IntDomaine equals = new IntDomaine();
         boolean end = false;
         boolean filtre = false;
+        boolean areEquals = false;
         int tmpminX;
         int tmpmaxX;
         int tmpminY;
@@ -83,15 +86,17 @@ public class XequalsY extends Binaire{
                     } else {
                         compteurX += 1;
                         compteurY += 1;
+                        areEquals = true;
                     }
-
                 }
             }
-
         }
         if(filtre){
-            dx.changeDomain(equals, compteurEquals);
-            dy.changeDomain(equals, compteurEquals);
+            dx.changeDomain(equals);
+            dy.changeDomain(equals);
+        } else if (!areEquals) {
+            System.out.println("XequalsY : variable est nulle\n");
+            throw new ExceptionDomNull("La variable est nulle");
         }
         return filtre;
     }

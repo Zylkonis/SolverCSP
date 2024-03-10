@@ -1,5 +1,6 @@
 package solver.solvercsp;
 
+import java.util.Map;
 import java.util.Stack;
 
 public class Backtracking {
@@ -8,18 +9,18 @@ public class Backtracking {
      * elementSupprime = maPile.pop(); --> retire et récupère
      * elementHaut = maPile.peek(); --> accède
      */
-    Stack<Variable> pileBactrack = new Stack<>();
+    Stack<Map<String, Variable>> pileBactrack = new Stack<>();
     public Backtracking(){}
 
-    public void add(Variable var){
-        this.pileBactrack.push(var);
+    public void add(Map<String, Variable> etat) {
+        this.pileBactrack.add(etat);
     }
 
-    public Variable getHead(){
-        return pileBactrack.peek();
+    public Map<String, Variable> getHead(){
+        return pileBactrack.pop();
     }
 
-    public void removeHead(){
-        pileBactrack.pop();
+    public boolean isEmpty() {
+        return this.pileBactrack.empty();
     }
 }
