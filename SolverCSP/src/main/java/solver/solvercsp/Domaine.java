@@ -10,11 +10,15 @@ public abstract class Domaine<Object> {
     public Domaine(){
         this.domaine = new HashMap<>();
     }
+    public Domaine(Domaine other){
+        this.domaine = other.domaine;
+        compteur = other.compteur;
+    }
 
-    public void changeDomain(Domaine<Object> domain, int size){
+    public void changeDomain(Domaine<Object> domain){
         this.domaine.clear();
         this.domaine = domain.getDomain();
-        this.compteur = size;
+        this.compteur = domain.getCompteur();
     }
 
     public Map<String, Object> getDomain(){
@@ -51,7 +55,7 @@ public abstract class Domaine<Object> {
             this.domaine = null;
         }
         else {
-            for (int i = index; i < (this.compteur - 1); i++){
+            for (int i = index; i < this.compteur - 1; i++){
                 this.domaine.replace("min" + i, this.domaine.get("min" + (i + 1)));
                 this.domaine.replace("max" + i, this.domaine.get("max" + (i + 1)));
             }

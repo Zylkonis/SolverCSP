@@ -1,5 +1,9 @@
 package solver.solvercsp;
 
+import java.sql.Array;
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class IntDomaine extends Domaine<Integer> {
 
     public IntDomaine() {
@@ -14,10 +18,27 @@ public class IntDomaine extends Domaine<Integer> {
         super.domaine.put("max0", max);
     }
 
-    public IntDomaine(int... values) {
+    public IntDomaine(IntDomaine other){
+        super.domaine = new HashMap<>(other.domaine);
+        super.compteur = other.compteur;
+    }
+
+    public IntDomaine(int... vals) {
         super();
-        //super.domaine.put("min0", min);
-        //super.domaine.put("max0", max);
+        if (vals.length % 2 == 0){
+            for (int i = 0; i < vals.length; i++){
+                if (i % 2 == 0){
+                    super.domaine.put("min" + (i/2), vals[i]);
+                }
+                else{
+                    super.domaine.put("max" + (i/2), vals[i]);
+                }
+            }
+        }
+        else {
+            throw new IllegalArgumentException("Nombre de valeurs incorrect");
+        }
+        super.compteur = vals.length / 2;
     }
 
     public int getCardDomaine(){
@@ -87,25 +108,29 @@ public class IntDomaine extends Domaine<Integer> {
     @Override
     public boolean diffDomaine(Integer val) {
         boolean filtre = false;
+        ArrayList<Integer> suppList = new ArrayList<>();
         for (int i = 0; i < super.compteur; i++) {
             if (super.domaine.get("min" + i).equals(val) && super.domaine.get("max" + i).equals(val)) {
-                super.remSousDomaine(i);
                 filtre = true;
+                suppList.add(i);
             }
-            if (super.domaine.get("min" + i).equals(val)) {
+            else if (super.domaine.get("min" + i).equals(val)) {
                 super.domaine.replace("min" + i, val + 1);
                 filtre =  true;
             }
-            if (super.domaine.get("max" + i).equals(val)) {
+            else if (super.domaine.get("max" + i).equals(val)) {
                 super.domaine.replace("max" + i, val - 1);
                 filtre =  true;
             }
-            if (super.domaine.get("min" + i) < val && val < super.domaine.get("max" + i)) {
+            else if (super.domaine.get("min" + i) < val && val < super.domaine.get("max" + i)) {
                 Integer max = super.domaine.get("max" + i);
                 super.domaine.replace("max" + i, val - 1);
                 super.addSousDomaine(i+1, val + 1, max);
                 filtre =  true;
             }
+        }
+        for (int i = suppList.size() - 1; i >= 0; i--){
+            super.remSousDomaine(i);
         }
         return filtre;
     }
@@ -114,16 +139,20 @@ public class IntDomaine extends Domaine<Integer> {
     public boolean egalDomaine(Integer val) {
         //A voir si on est dans le cas avec une variable
         boolean filtre = false;
+        ArrayList<Integer> domIndex = new ArrayList<Integer>();
         for (int i = 0; i < super.compteur; i++) {
-            if ((!(super.domaine.get("min" + i).equals(val))) || (!(super.domaine.get("max" + i).equals(val)))){  //(super.domaine.get("min" + i) != val || super.domaine.get("max" + i) != val) --> avant
+            if ((!(super.domaine.get("min" + i).equals(val))) || (!(super.domaine.get("max" + i).equals(val)))){  //tant que la valeur est différente d'au moins une des bornes
                 if (super.domaine.get("min" + i) <= val && val <= super.domaine.get("max" + i)) {
                     super.domaine.replace("min" + i, val);
                     super.domaine.replace("max" + i, val);
                 } else {
-                    super.remSousDomaine(i);
+                    domIndex.add(i);
                 }
                 filtre = true;
             }
+        }
+        for (int i = domIndex.size() - 1; i >= 0; i--){
+            this.remSousDomaine(domIndex.get(i));
         }
         return filtre;
     }

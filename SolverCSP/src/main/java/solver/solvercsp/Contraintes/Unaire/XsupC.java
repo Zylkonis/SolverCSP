@@ -2,6 +2,7 @@ package solver.solvercsp.Contraintes.Unaire;
 
 import solver.solvercsp.Contraintes.Unaire.Unaire;
 import solver.solvercsp.Domaine;
+import solver.solvercsp.ExceptionDomNull;
 import solver.solvercsp.IntDomaine;
 import solver.solvercsp.Variable;
 
@@ -11,15 +12,15 @@ public class XsupC extends Unaire {
     }
 
     @Override
-    public boolean evaluate(){
+    public boolean evaluate() throws ExceptionDomNull {
         //X > C
         boolean filtre = super.var.supDomaine(super.cst);
-        Domaine d = (IntDomaine) this.var.getDomaine();
-        System.out.println(d);
+        Domaine d = super.var.getDomaine();
         if(d.getDomain() == null){
-            throw new NullPointerException("La variable est nulle");
+            throw new ExceptionDomNull("La variable est nulle");
         } else {
             return filtre;
         }
     }
 }
+
