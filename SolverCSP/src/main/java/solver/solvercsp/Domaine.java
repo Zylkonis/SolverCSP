@@ -10,11 +10,15 @@ public abstract class Domaine<Object> {
     public Domaine(){
         this.domaine = new HashMap<>();
     }
+    public Domaine(Domaine other){
+        this.domaine = other.domaine;
+        compteur = other.compteur;
+    }
 
-    public void changeDomain(Domaine<Object> domain, int size){
+    public void changeDomain(Domaine<Object> domain){
         this.domaine.clear();
         this.domaine = domain.getDomain();
-        this.compteur = size;
+        this.compteur = domain.getCompteur();
     }
 
     public Map<String, Object> getDomain(){
@@ -35,14 +39,13 @@ public abstract class Domaine<Object> {
             this.domaine.put("max" + this.compteur, this.domaine.get("max" + (this.compteur - 1)));
             this.compteur += 1;
 
-            for (int i = compteur - 2; i > place; i--)
+            for (int i = this.compteur - 2; i > place; i--)
             {
                 this.domaine.replace("min" + i, this.domaine.get("min" + (i-1)));
                 this.domaine.replace("max" + i, this.domaine.get("max" + (i-1)));
-                System.out.println("Code Julien\n");
             }
-            this.domaine.replace("min" + (place), min);
-            this.domaine.replace("max" + (place), max);
+            this.domaine.replace("min" + place, min);
+            this.domaine.replace("max" + place, max);
         }
     }
 
@@ -51,7 +54,7 @@ public abstract class Domaine<Object> {
             this.domaine = null;
         }
         else {
-            for (int i = index; i < (this.compteur - 1); i++){
+            for (int i = index; i < this.compteur - 1; i++){
                 this.domaine.replace("min" + i, this.domaine.get("min" + (i + 1)));
                 this.domaine.replace("max" + i, this.domaine.get("max" + (i + 1)));
             }

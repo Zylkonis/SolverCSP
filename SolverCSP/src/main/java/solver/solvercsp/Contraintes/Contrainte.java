@@ -1,5 +1,6 @@
 package solver.solvercsp.Contraintes;
 
+import solver.solvercsp.ExceptionDomNull;
 import solver.solvercsp.Variable;
 
 import java.util.Collection;
@@ -11,6 +12,6 @@ public abstract class Contrainte {
 
     public Contrainte(){}
 
-    public abstract boolean evaluate();
+    public abstract boolean evaluate() throws ExceptionDomNull;
 
 }

@@ -7,46 +7,31 @@ import static org.junit.jupiter.api.Assertions.*;
 class DomaineTest {
 
     @Test
-    void changeDomain() {
+    void changeDomain(){
+
     }
 
     @Test
-    void getDomain() {
+    void getDomain(){
     }
 
     @Test
-    void addSousDomaine() {
+    void addSousDomaine(){
     }
 
     @Test
-    void testAddSousDomaine() {
+    void testAddSousDomaine(){
     }
 
     @Test
-    void remSousDomaine() {
+    void remSousDomaine(){
     }
 
     @Test
-    void getCompteur() {
+    void getCompteur(){
     }
 
     @Test
-    void infDomaine() {
-    }
-
-    @Test
-    void supDomaine() {
-    }
-
-    @Test
-    void diffDomaine() {
-    }
-
-    @Test
-    void egalDomaine() {
-    }
-
-    @Test
-    void printDomain() {
+    void printDomain(){
     }
 }
