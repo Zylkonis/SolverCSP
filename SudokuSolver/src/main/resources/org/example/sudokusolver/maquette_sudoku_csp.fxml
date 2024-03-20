@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-spacing: 5;" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="51.0" prefWidth="560.0" style="-fx-alignment: center;">
+               <children>
+                  <Label text="SUDOKU" />
+                  <Label text="Set the grid" />
+               </children>
+            </VBox>
+            <HBox prefHeight="302.0" prefWidth="560.0" style="-fx-spacing: 50; -fx-alignment: center;">
+               <children>
+                  <VBox prefHeight="302.0" prefWidth="242.0" style="-fx-spacing: 20; -fx-alignment: center;">
+                     <children>
+                        <StackPane prefHeight="227.0" prefWidth="240.0">
+                           <children>
+                              <GridPane gridLinesVisible="true" prefHeight="264.0" prefWidth="258.0">
+                                <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                              </GridPane>
+                              <GridPane prefHeight="264.0" prefWidth="247.0">
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                                 <children>
+                                    <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: 5; -fx-border-color: black;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                    <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: 5; -fx-border-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: 5; -fx-border-color: black;" GridPane.rowIndex="2" />
+                                    <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: 5; -fx-border-color: black;" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                    <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: 5; -fx-border-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: 5; -fx-border-color: black;" GridPane.rowIndex="1" />
+                                    <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: 5; -fx-border-color: black;" GridPane.columnIndex="2" />
+                                    <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: 5; -fx-border-color: black;" GridPane.columnIndex="1" />
+                                    <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: 5; -fx-border-color: black;" />
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </StackPane>
+                        <Button minHeight="50.0" minWidth="200.0" mnemonicParsing="false" text="Solve" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-spacing: 20;">
+                     <children>
+                        <VBox prefHeight="235.0" prefWidth="183.0" style="-fx-alignment: center; -fx-spacing: 10;">
+                           <children>
+                              <HBox prefHeight="187.0" prefWidth="270.0" style="-fx-alignment: center;">
+                                 <children>
+                                    <GridPane prefHeight="187.0" prefWidth="186.0" style="-fx-hgap: 10; -fx-vgap: 10;">
+                                      <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="138.0" minWidth="10.0" prefWidth="58.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="152.0" minWidth="10.0" prefWidth="57.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="164.0" minWidth="10.0" prefWidth="51.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints maxHeight="128.0" minHeight="10.0" prefHeight="53.0" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="176.0" minHeight="0.0" prefHeight="53.0" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="176.0" minHeight="0.0" prefHeight="51.0" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="176.0" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <Button maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" mnemonicParsing="false" text="4" GridPane.rowIndex="1" />
+                                          <Button maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" mnemonicParsing="false" text="2" GridPane.columnIndex="1" />
+                                          <Button maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" mnemonicParsing="false" text="3" GridPane.columnIndex="2" />
+                                          <Button maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" mnemonicParsing="false" text="7" GridPane.rowIndex="2" />
+                                          <Button maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" mnemonicParsing="false" text="9" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                                          <Button maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" mnemonicParsing="false" text="8" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <Button maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" mnemonicParsing="false" text="6" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                          <Button maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" mnemonicParsing="false" text="5" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <Button maxHeight="50.0" maxWidth="50.0" minHeight="50.0" minWidth="50.0" mnemonicParsing="false" style="-fx-alignment: center;" text="1" />
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </HBox>
+                              <Button minHeight="30.0" minWidth="150.0" mnemonicParsing="false" text="Reset Grid" />
+                           </children>
+                        </VBox>
+                        <Button minHeight="50.0" minWidth="183.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="183.0" text="Reset Grid" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>
