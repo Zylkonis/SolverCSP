@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.sudokusolver.Controller.PgcdController"
+            >
+    <top>
+        <Label style="-fx-font-size: 35; -fx-underline: true">Largest Common Divider</Label>
+    </top>
+    <left>
+        <VBox>
+            <VBox fx:id="allValues">
+                <HBox>
+                    <Label text="Value n°1 :"/>
+                    <TextField fx:id="value1" promptText="Enter a value..." style="-fx-font-style: #808080"/>
+                </HBox>
+                <HBox>
+                    <Label text="Value n°2 :"/>
+                    <TextField fx:id="value2" promptText="Enter a value..." style="-fx-font-style: #808080"/>
+                </HBox>
+            </VBox>
+            <HBox>
+                <Button fx:id="addValue" text="Add a value" onAction="#addValueAction"/>
+            </HBox>
+        </VBox>
+    </left>
+    <right>
+        <VBox>
+            <Button fx:id="solve" text="Solve" onAction="#solveAction"/>
+            <Button fx:id="reset" text="Reset" onAction="#resetAction"/>
+            <VBox>
+                <Label text="Result :"/>
+                <Label fx:id="result"/>
+            </VBox>
+        </VBox>
+    </right>
+</BorderPane>
